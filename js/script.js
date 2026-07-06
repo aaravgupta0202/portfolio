@@ -247,7 +247,7 @@
     card.setAttribute('role', 'button');
     card.setAttribute('tabindex', '0');
 
-    const linkLabel = type === 'game' ? 'Play on itch.io' : 'View Project';
+    const linkLabel = item.linkLabel || (type === 'game' ? 'Play on itch.io' : 'View Project');
     const primaryLink = type === 'game' ? (item.itchLink || item.link || '#') : (item.link || '#');
 
     card.innerHTML = `
