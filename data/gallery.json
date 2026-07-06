@@ -1,0 +1,60 @@
+[
+  {
+    "id": "art-1",
+    "name": "Art Piece One",
+    "description": "A placeholder for your first 3D art piece. Describe the scene, rendering technique, and inspiration.",
+    "software": "Blender · Cycles",
+    "tags": ["Blender", "Cycles"],
+    "year": "2024",
+    "sketchfabLink": "",
+    "images": [
+      "images/gallery/art-1/1.png",
+      "images/gallery/art-1/2.png"
+    ],
+    "thumbnail": "images/gallery/art-1/thumb.png",
+    "imageCount": 2
+  },
+  {
+    "id": "art-2",
+    "name": "Art Piece Two",
+    "description": "A placeholder for your second 3D art piece. Describe the scene, rendering technique, and inspiration.",
+    "software": "Blender · Substance Painter",
+    "tags": ["Blender", "Substance Painter"],
+    "year": "2024",
+    "sketchfabLink": "",
+    "images": [
+      "images/gallery/art-2/1.png",
+      "images/gallery/art-2/2.png"
+    ],
+    "thumbnail": "images/gallery/art-2/thumb.png",
+    "imageCount": 2
+  },
+  {
+    "id": "art-3",
+    "name": "Art Piece Three",
+    "description": "A placeholder for your third 3D art piece. Describe the scene, rendering technique, and inspiration.",
+    "software": "Blender · Eevee",
+    "tags": ["Blender", "Eevee"],
+    "year": "2023",
+    "sketchfabLink": "",
+    "images": [
+      "images/gallery/art-3/1.png"
+    ],
+    "thumbnail": "images/gallery/art-3/thumb.png",
+    "imageCount": 1
+  },
+  {
+    "id": "art-4",
+    "name": "Art Piece Four",
+    "description": "A placeholder for your fourth 3D art piece. Describe the scene, rendering technique, and inspiration.",
+    "software": "Blender · Octane",
+    "tags": ["Blender", "Octane"],
+    "year": "2023",
+    "sketchfabLink": "",
+    "images": [
+      "images/gallery/art-4/1.png"
+    ],
+    "thumbnail": "images/gallery/art-4/thumb.png",
+    "imageCount": 1
+  }
+]

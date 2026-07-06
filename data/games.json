@@ -1,0 +1,46 @@
+[
+  {
+    "id": "game-1",
+    "name": "Game One",
+    "description": "A placeholder for your first game. Describe the genre, mechanics, and what makes it fun to play.",
+    "tags": ["Unity", "C#", "Game Jam"],
+    "year": "2024",
+    "itchLink": "https://itch.io",
+    "otherLink": "",
+    "images": [
+      "images/games/game-1/1.png",
+      "images/games/game-1/2.png",
+      "images/games/game-1/3.png"
+    ],
+    "imageCount": 3
+  },
+  {
+    "id": "game-2",
+    "name": "Game Two",
+    "description": "A racing, puzzle, or platformer game. Describe its unique mechanics and what makes it stand out.",
+    "tags": ["Godot", "GDScript", "Procedural"],
+    "year": "2024",
+    "itchLink": "https://itch.io",
+    "otherLink": "",
+    "images": [
+      "images/games/game-2/1.png",
+      "images/games/game-2/2.png"
+    ],
+    "imageCount": 2
+  },
+  {
+    "id": "game-3",
+    "name": "Game Three",
+    "description": "A puzzle or story-driven game. Talk about the design philosophy and any awards or recognition received.",
+    "tags": ["Unity", "C#", "Puzzle"],
+    "year": "2023",
+    "itchLink": "https://itch.io",
+    "otherLink": "",
+    "images": [
+      "images/games/game-3/1.png",
+      "images/games/game-3/2.png",
+      "images/games/game-3/3.png"
+    ],
+    "imageCount": 3
+  }
+]

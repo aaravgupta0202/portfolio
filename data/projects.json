@@ -1,0 +1,59 @@
+[
+  {
+    "id": "project-1",
+    "name": "Project One",
+    "description": "A placeholder for your first website project. Describe what it does, the technologies used, and what makes it special.",
+    "tags": ["React", "Node.js", "MongoDB"],
+    "year": "2025",
+    "link": "https://example.com",
+    "github": "",
+    "images": [
+      "images/projects/project-1/1.png",
+      "images/projects/project-1/2.png",
+      "images/projects/project-1/3.png"
+    ],
+    "imageCount": 3
+  },
+  {
+    "id": "project-2",
+    "name": "Project Two",
+    "description": "Another placeholder project. This could be a dashboard, SaaS tool, or creative web experience you've built.",
+    "tags": ["Next.js", "TypeScript", "Prisma"],
+    "year": "2024",
+    "link": "https://example.com",
+    "github": "",
+    "images": [
+      "images/projects/project-2/1.png",
+      "images/projects/project-2/2.png"
+    ],
+    "imageCount": 2
+  },
+  {
+    "id": "project-3",
+    "name": "Project Three",
+    "description": "A creative portfolio or design platform. Showcase your most visually stunning web work here.",
+    "tags": ["Three.js", "GSAP", "WebGL"],
+    "year": "2024",
+    "link": "https://example.com",
+    "github": "",
+    "images": [
+      "images/projects/project-3/1.png",
+      "images/projects/project-3/2.png"
+    ],
+    "imageCount": 2
+  },
+  {
+    "id": "project-4",
+    "name": "Project Four",
+    "description": "An e-commerce or full-stack application. Highlight performance, UX, and any unique technical challenges.",
+    "tags": ["React", "Stripe", "Firebase"],
+    "year": "2023",
+    "link": "https://example.com",
+    "github": "",
+    "images": [
+      "images/projects/project-4/1.png",
+      "images/projects/project-4/2.png"
+    ],
+    "imageCount": 2
+  }
+]

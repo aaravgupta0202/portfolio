@@ -1,0 +1,13 @@
+{
+  "name": "Aarav Gupta",
+  "role": "Developer · 3D Artist · Game Dev",
+  "email": "your@email.com",
+  "location": "India",
+  "resumeLink": "/resume.pdf",
+  "links": {
+    "github": "https://github.com/your-username",
+    "linkedin": "https://linkedin.com/in/your-profile",
+    "twitter": "https://twitter.com/your-handle",
+    "itchio": "https://your-username.itch.io"
+  }
+}
