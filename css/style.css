@@ -45,7 +45,7 @@ a, button {
   left: 0;
   width: 24px;
   height: 24px;
-  border: 2px solid var(--accent);
+  border: 2px solid #fff; /* White border allows difference mode to create contrast */
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
