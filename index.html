@@ -9,24 +9,30 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
+  <!-- Custom Marker Cursor -->
+  <div id="custom-cursor" class="custom-cursor"></div>
+  
+  <!-- Interactive Drawing Canvas -->
+  <canvas id="drawing-canvas"></canvas>
+
+  <div class="container relative-z">
     <header class="hero creative-hero fade-in" id="hero">
       <div class="hero-content">
-        <div class="hero-greeting">Hi! I'm</div>
+        <div class="hero-greeting"><span class="highlight">Hi! I'm</span></div>
         <h1 class="hero-name" id="hero-name">AARAV</h1>
         
         <div class="hero-character-wrapper" id="parallax-container">
-          <img src="images/profile.png" alt="Aarav Gupta" class="hero-character" id="hero-character" />
+          <img src="images/profile.png" alt="Aarav Gupta" class="hero-character floating" id="hero-character" />
         </div>
         
         <div class="hero-typing-container">
           <span class="typing-text" id="typing-text"></span><span class="cursor-blink">|</span>
         </div>
         
-        <p id="hero-location" class="location">India</p>
+        <p id="hero-location" class="location highlight">India</p>
         <div id="contact-socials" class="social-links"></div>
       </div>
       
@@ -37,23 +43,24 @@
 
     <main>
       <section id="projects" class="section fade-in">
-        <h2 class="section-title">Selected Projects</h2>
-        <div id="projects-grid" class="grid"></div>
+        <h2 class="section-title"><span class="highlight">Selected Projects</span></h2>
+        <div id="projects-grid" class="scattered-grid"></div>
       </section>
 
       <section id="games" class="section fade-in">
-        <h2 class="section-title">Games</h2>
-        <div id="games-grid" class="grid"></div>
+        <h2 class="section-title"><span class="highlight">Games</span></h2>
+        <div id="games-grid" class="scattered-grid"></div>
       </section>
 
       <section id="gallery" class="section fade-in">
-        <h2 class="section-title">3D Art & Gallery</h2>
-        <div id="gallery-grid" class="grid gallery-grid"></div>
+        <h2 class="section-title"><span class="highlight">3D Art & Gallery</span></h2>
+        <div id="gallery-grid" class="scattered-grid"></div>
       </section>
     </main>
 
     <footer class="footer fade-in">
       <p>© <span id="current-year"></span> <span id="footer-name">Aarav Gupta</span></p>
+      <p class="doodle-text">Made with lots of coffee and scribbles</p>
     </footer>
   </div>
 

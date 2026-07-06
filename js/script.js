@@ -1,35 +1,135 @@
 /* ============================================================
-   AARAV GUPTA — CREATIVE PORTFOLIO SCRIPT
+   AARAV GUPTA — UNCONSTRAINED CREATIVE PORTFOLIO SCRIPT
    ============================================================ */
 
 (function () {
   'use strict';
 
-  // ── SVG Icon Templates ──
   const ICONS = {
-    chevron: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`,
-    external: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`,
-    github: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>`,
-    linkedin: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>`,
-    twitter: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>`,
-    gamepad: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="11" x2="10" y2="11"/><line x1="8" y1="9" x2="8" y2="13"/><line x1="15" y1="12" x2="15.01" y2="12"/><line x1="18" y1="10" x2="18.01" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>`,
-    mail: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`,
-    image: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>`,
-    box3d: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`
+    chevron: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`,
+    external: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`,
+    github: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>`,
+    linkedin: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>`,
+    twitter: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>`,
+    gamepad: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="11" x2="10" y2="11"/><line x1="8" y1="9" x2="8" y2="13"/><line x1="15" y1="12" x2="15.01" y2="12"/><line x1="18" y1="10" x2="18.01" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>`,
+    mail: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`,
+    image: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>`,
+    box3d: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`
   };
 
   const modalOverlay = document.getElementById('modal-overlay');
 
-  // ── Load JSON data ──
-  async function loadJSON(path) {
-    try {
-      const res = await fetch(path);
-      if (!res.ok) throw new Error(`${res.status}`);
-      return await res.json();
-    } catch (e) {
-      console.warn(`Failed to load ${path}:`, e);
-      return null;
+  // ── Custom Cursor ──
+  const cursor = document.getElementById('custom-cursor');
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (cursor) {
+      cursor.style.left = `${mouseX}px`;
+      cursor.style.top = `${mouseY}px`;
     }
+  });
+
+  // Handle cursor hover states
+  function initHoverCursors() {
+    const interactables = document.querySelectorAll('a, button, .card, .gallery-item, .modal-thumb, .hero-character');
+    interactables.forEach(el => {
+      el.addEventListener('mouseenter', () => cursor?.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor?.classList.remove('hover'));
+    });
+  }
+
+  // ── Drawing Canvas Background ──
+  const canvas = document.getElementById('drawing-canvas');
+  const ctx = canvas?.getContext('2d');
+  let isDrawing = false;
+  let lines = []; // store lines for fading
+
+  if (canvas && ctx) {
+    // Resize canvas
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.15)';
+    ctx.lineWidth = 4;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    let lastX = 0;
+    let lastY = 0;
+
+    document.addEventListener('mousedown', (e) => {
+      isDrawing = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDrawing) return;
+      lines.push({
+        x1: lastX,
+        y1: lastY,
+        x2: e.clientX,
+        y2: e.clientY,
+        life: 1.0
+      });
+      lastX = e.clientX;
+      lastY = e.clientY;
+    });
+
+    document.addEventListener('mouseup', () => isDrawing = false);
+    
+    // Draw loop for fading
+    function drawLoop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      for (let i = lines.length - 1; i >= 0; i--) {
+        const l = lines[i];
+        ctx.beginPath();
+        ctx.moveTo(l.x1, l.y1);
+        ctx.lineTo(l.x2, l.y2);
+        ctx.strokeStyle = `rgba(0, 0, 0, ${l.life * 0.15})`;
+        ctx.stroke();
+        
+        l.life -= 0.01; // fade out speed
+        if (l.life <= 0) {
+          lines.splice(i, 1);
+        }
+      }
+      requestAnimationFrame(drawLoop);
+    }
+    drawLoop();
+  }
+
+  // ── Character Interaction ──
+  function initCharacter() {
+    const character = document.getElementById('hero-character');
+    if (!character) return;
+    
+    // Spin on click
+    character.addEventListener('click', () => {
+      character.classList.add('spin');
+      setTimeout(() => character.classList.remove('spin'), 1000);
+    });
+
+    // Subtle parallax that stacks with floating
+    document.addEventListener('mousemove', (e) => {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const deltaX = (e.clientX - centerX) / centerX;
+      const deltaY = (e.clientY - centerY) / centerY;
+      
+      // We apply margins so it doesn't override the floating transform
+      character.style.marginLeft = `${deltaX * 30}px`;
+      character.style.marginTop = `${deltaY * 30}px`;
+    });
   }
 
   // ── Typing Effect State ──
@@ -51,52 +151,28 @@
       charIndex++;
     }
 
-    let typeSpeed = isDeleting ? 30 : 80;
+    let typeSpeed = isDeleting ? 40 : 100;
 
     if (!isDeleting && charIndex === currentRole.length) {
-      typeSpeed = 2000;
+      typeSpeed = 1500;
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       roleIndex = (roleIndex + 1) % roles.length;
-      typeSpeed = 400;
+      typeSpeed = 300;
     }
     setTimeout(typeEffect, typeSpeed);
   }
 
-  // ── Mouse Parallax Effect ──
-  function initParallax() {
-    const heroSection = document.getElementById('hero');
-    const character = document.getElementById('hero-character');
-
-    if (heroSection && character) {
-      heroSection.addEventListener('mousemove', (e) => {
-        const rect = heroSection.getBoundingClientRect();
-        const x = e.clientX - rect.left; 
-        const y = e.clientY - rect.top;  
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const deltaX = (x - centerX) / centerX;
-        const deltaY = (y - centerY) / centerY;
-        
-        const rotateX = deltaY * -20; 
-        const rotateY = deltaX * 20;  
-        const translateX = deltaX * 30; 
-        const translateY = deltaY * 30;
-        
-        character.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      });
-      
-      heroSection.addEventListener('mouseleave', () => {
-        character.style.transform = `translate3d(0, 0, 0) rotateX(0) rotateY(0)`;
-        character.style.transition = `transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)`;
-      });
-      
-      heroSection.addEventListener('mouseenter', () => {
-        character.style.transition = `transform 0.1s ease-out`;
-      });
+  // ── Data Loading & Rendering ──
+  async function loadJSON(path) {
+    try {
+      const res = await fetch(path);
+      if (!res.ok) throw new Error(`${res.status}`);
+      return await res.json();
+    } catch (e) {
+      console.warn(`Failed to load ${path}:`, e);
+      return null;
     }
   }
 
@@ -112,23 +188,33 @@
     if (games) renderGames(games);
     if (gallery) renderGallery(gallery);
     if (socials) {
-      if (socials.role) {
-        roles = socials.role.split('·').map(s => s.trim());
-      }
+      if (socials.role) roles = socials.role.split('·').map(s => s.trim());
       renderSocials(socials);
     }
 
     typeEffect();
-    initParallax();
+    initCharacter();
     initReveal();
+    
+    // Timeout to ensure DOM is fully populated before adding hover listeners
+    setTimeout(initHoverCursors, 100);
   }
 
-  // ── Render Functions ──
+  // Helper for random polaroid rotation
+  function getRandomRotation() {
+    const angle = (Math.random() - 0.5) * 8; // -4deg to +4deg
+    return `rotate(${angle}deg)`;
+  }
+
   function renderProjects(items) {
     const container = document.getElementById('projects-grid');
     if (!container) return;
     container.innerHTML = '';
-    items.forEach(item => container.appendChild(createCard(item, 'project')));
+    items.forEach(item => {
+      const card = createCard(item, 'project');
+      card.style.transform = getRandomRotation();
+      container.appendChild(card);
+    });
   }
 
   function renderGames(items) {
@@ -137,7 +223,9 @@
     container.innerHTML = '';
     items.forEach(item => {
       const normalized = { ...item, link: item.itchLink || item.link || '' };
-      container.appendChild(createCard(normalized, 'game'));
+      const card = createCard(normalized, 'game');
+      card.style.transform = getRandomRotation();
+      container.appendChild(card);
     });
   }
 
@@ -160,7 +248,7 @@
         </div>
         <div class="card-footer">
           <span class="card-year">${escapeHTML(item.year || '')}</span>
-          <span class="card-link">${linkLabel} ${ICONS.chevron}</span>
+          <span class="card-link">${linkLabel}</span>
         </div>
       </div>
     `;
@@ -177,10 +265,6 @@
       secondaryLabel: item.github ? 'GitHub' : (item.sketchfabLink ? 'Sketchfab' : 'Code'),
     }));
 
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
-    });
-
     return card;
   }
 
@@ -194,6 +278,7 @@
       el.className = 'gallery-item';
       el.setAttribute('role', 'button');
       el.setAttribute('tabindex', '0');
+      el.style.transform = getRandomRotation();
 
       const thumbSrc = item.thumbnail || (item.images && item.images[0]);
       const imgHTML = thumbSrc
@@ -218,10 +303,6 @@
         primaryLabel: 'View on Sketchfab',
       }));
 
-      el.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
-      });
-
       container.appendChild(el);
     });
   }
@@ -229,10 +310,8 @@
   function renderSocials(data) {
     document.title = `${data.name} — Portfolio`;
     
-    // Check if the hero-name is uppercase
     const fName = data.name.split(' ')[0].toUpperCase();
     document.getElementById('hero-name').textContent = fName;
-    document.getElementById('hero-location').textContent = data.location;
     document.getElementById('footer-name').textContent = data.name;
 
     const socialsContainer = document.getElementById('contact-socials');
@@ -254,7 +333,7 @@
         a.rel = 'noopener';
         a.className = 'social-btn';
         a.ariaLabel = s.label;
-        a.innerHTML = `<span style="width:20px;height:20px;display:flex;">${ICONS[s.icon]}</span>`;
+        a.innerHTML = `<span style="width:24px;height:24px;display:flex;">${ICONS[s.icon]}</span>`;
         socialsContainer.appendChild(a);
       });
 
@@ -262,7 +341,7 @@
         const emailBtn = document.createElement('a');
         emailBtn.href = `mailto:${data.email}`;
         emailBtn.className = 'social-btn primary';
-        emailBtn.innerHTML = `<span style="width:18px;height:18px;display:flex;">${ICONS.mail}</span> Contact Me`;
+        emailBtn.innerHTML = `<span style="width:20px;height:20px;display:flex;">${ICONS.mail}</span> Say Hello`;
         socialsContainer.appendChild(emailBtn);
       }
     }
@@ -320,7 +399,7 @@
       btn.target = '_blank';
       btn.rel = 'noopener';
       btn.className = 'modal-btn modal-btn-primary';
-      btn.innerHTML = `<span style="width:18px;height:18px;display:flex;">${ICONS.external}</span> ${escapeHTML(data.primaryLabel || 'Visit')}`;
+      btn.innerHTML = `<span style="width:20px;height:20px;display:flex;">${ICONS.external}</span> ${escapeHTML(data.primaryLabel || 'Visit')}`;
       actionsEl.appendChild(btn);
     }
 
@@ -330,18 +409,19 @@
       btn2.target = '_blank';
       btn2.rel = 'noopener';
       btn2.className = 'modal-btn modal-btn-secondary';
-      btn2.innerHTML = `<span style="width:18px;height:18px;display:flex;">${ICONS.github}</span> ${escapeHTML(data.secondaryLabel || 'Code')}`;
+      btn2.innerHTML = `<span style="width:20px;height:20px;display:flex;">${ICONS.github}</span> ${escapeHTML(data.secondaryLabel || 'Code')}`;
       actionsEl.appendChild(btn2);
     }
 
     modalOverlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    // Ensure custom cursor works in modal
+    initHoverCursors(); 
   }
 
   function renderModalImage(index) {
     const mainImg = document.getElementById('modal-main-img');
     if (currentModalImages.length === 0 || !currentModalImages[index]) {
-      mainImg.innerHTML = `<div class="placeholder-icon" style="width:48px;height:48px;">${ICONS.image}</div>`;
+      mainImg.innerHTML = `<div class="placeholder-icon" style="width:64px;height:64px;">${ICONS.image}</div>`;
       return;
     }
 
@@ -349,7 +429,7 @@
     img.src = currentModalImages[index];
     img.alt = 'Preview';
     img.onerror = function () {
-      mainImg.innerHTML = `<div class="placeholder-icon" style="width:48px;height:48px;">${ICONS.image}</div>`;
+      mainImg.innerHTML = `<div class="placeholder-icon" style="width:64px;height:64px;">${ICONS.image}</div>`;
     };
     mainImg.innerHTML = '';
     mainImg.appendChild(img);
@@ -357,7 +437,6 @@
 
   function closeModal() {
     modalOverlay?.classList.remove('open');
-    document.body.style.overflow = '';
   }
 
   document.getElementById('modal-close-btn')?.addEventListener('click', closeModal);
