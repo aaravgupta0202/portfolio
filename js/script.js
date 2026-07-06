@@ -18,20 +18,24 @@
   };
 
   const modalOverlay = document.getElementById('modal-overlay');
+  
+  const isTouchDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
   // ── Custom Cursor ──
   const cursor = document.getElementById('custom-cursor');
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
 
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    if (cursor) {
-      cursor.style.left = `${mouseX}px`;
-      cursor.style.top = `${mouseY}px`;
-    }
-  });
+  if (!isTouchDevice) {
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (cursor) {
+        cursor.style.left = `${mouseX}px`;
+        cursor.style.top = `${mouseY}px`;
+      }
+    });
+  }
 
   // Handle cursor hover states
   function initHoverCursors() {
@@ -48,7 +52,7 @@
   let isDrawing = false;
   let lines = []; // store lines for fading
 
-  if (canvas && ctx) {
+  if (canvas && ctx && !isTouchDevice) {
     // Resize canvas
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -119,17 +123,18 @@
       setTimeout(() => character.classList.remove('spin'), 1000);
     });
 
-    // Subtle parallax that stacks with floating
-    document.addEventListener('mousemove', (e) => {
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      const deltaX = (e.clientX - centerX) / centerX;
-      const deltaY = (e.clientY - centerY) / centerY;
-      
-      // We apply margins so it doesn't override the floating transform
-      character.style.marginLeft = `${deltaX * 30}px`;
-      character.style.marginTop = `${deltaY * 30}px`;
-    });
+    if (!isTouchDevice) {
+      // Subtle parallax that stacks with floating
+      document.addEventListener('mousemove', (e) => {
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const deltaX = (e.clientX - centerX) / centerX;
+        const deltaY = (e.clientY - centerY) / centerY;
+        
+        character.style.marginLeft = `${deltaX * 30}px`;
+        character.style.marginTop = `${deltaY * 30}px`;
+      });
+    }
   }
 
   // ── Typing Effect State ──

@@ -706,3 +706,49 @@ h1, h2, h3 {
   color: var(--text-secondary);
   opacity: 0.3;
 }
+
+/* ── Mobile & Touch Devices ── */
+@media (hover: none) and (pointer: coarse) {
+  /* Hide custom cursor and restore default pointer */
+  .custom-cursor {
+    display: none !important;
+  }
+  
+  * {
+    cursor: auto !important;
+  }
+
+  a, button, .card, .gallery-item, .modal-thumb, .hero-character, .modal-overlay.open, .modal-close {
+    cursor: pointer !important;
+  }
+
+  /* Make carousels swipeable instead of auto-scrolling */
+  .carousel-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 20px;
+    padding-bottom: 30px;
+  }
+  
+  .carousel-track {
+    animation: none !important;
+  }
+  
+  .card, .gallery-item {
+    scroll-snap-align: center;
+  }
+  
+  /* Hero adjustments for smaller screens */
+  .hero-name {
+    font-size: clamp(4rem, 15vw, 8rem);
+  }
+  
+  .hero-character {
+    width: 180px;
+  }
+  
+  .modal {
+    max-height: 85vh;
+  }
+}
