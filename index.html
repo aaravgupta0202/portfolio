@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aarav Gupta — Portfolio</title>
+  <meta name="description" content="Portfolio of Aarav Gupta — Developer, 3D Artist, and Game Developer." />
+  <meta name="theme-color" content="#F9F9F6" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Custom Marker Cursor -->
+  <div id="custom-cursor" class="custom-cursor"></div>
+  
+  <!-- Interactive Drawing Canvas -->
+  <canvas id="drawing-canvas"></canvas>
+
+  <div class="container relative-z">
+    <header class="hero creative-hero fade-in" id="hero">
+      <div class="hero-content">
+        <div class="hero-greeting"><span class="highlight">Hi! I'm</span></div>
+        <h1 class="hero-name" id="hero-name">AARAV</h1>
+        
+        <div class="hero-character-wrapper" id="parallax-container">
+          <img src="images/profile.png" alt="Aarav Gupta" class="hero-character floating" id="hero-character" />
+        </div>
+        
+        <div class="hero-typing-container">
+          <span class="typing-text" id="typing-text"></span><span class="cursor-blink">|</span>
+        </div>
+        
+        <p id="hero-location" class="location highlight">India</p>
+        <div id="contact-socials" class="social-links"></div>
+      </div>
+      
+      <div class="scroll-indicator">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </div>
+    </header>
+
+    <main>
+      <section id="projects" class="section fade-in">
+        <h2 class="section-title"><span class="highlight">Selected Projects</span></h2>
+        <div class="carousel-container">
+          <div id="projects-grid" class="carousel-track track-left"></div>
+        </div>
+      </section>
+
+      <section id="games" class="section fade-in">
+        <h2 class="section-title"><span class="highlight">Games</span></h2>
+        <div class="carousel-container">
+          <div id="games-grid" class="carousel-track track-right"></div>
+        </div>
+      </section>
+
+      <section id="gallery" class="section fade-in">
+        <h2 class="section-title"><span class="highlight">3D Art & Gallery</span></h2>
+        <div class="carousel-container">
+          <div id="gallery-grid" class="carousel-track track-left"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer fade-in">
+      <p>© <span id="current-year"></span> <span id="footer-name">Aarav Gupta</span></p>
+      <p class="doodle-text">Made with lots of coffee and scribbles</p>
+    </footer>
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="modal-content">
+        <div class="modal-gallery" id="modal-main-img"></div>
+        <div class="modal-gallery-thumbs" id="modal-thumbs"></div>
+        <div class="modal-body">
+          <h3 id="modal-title">Title</h3>
+          <div id="modal-tags" class="modal-tags"></div>
+          <p id="modal-year" class="modal-year"></p>
+          <p id="modal-desc" class="modal-desc"></p>
+          <div id="modal-actions" class="modal-actions"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
