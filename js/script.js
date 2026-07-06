@@ -1,5 +1,5 @@
 /* ============================================================
-   AARAV GUPTA — MINIMAL PORTFOLIO SCRIPT
+   AARAV GUPTA — CREATIVE PORTFOLIO SCRIPT
    ============================================================ */
 
 (function () {
@@ -18,7 +18,6 @@
     box3d: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`
   };
 
-  // ── DOM Refs ──
   const modalOverlay = document.getElementById('modal-overlay');
 
   // ── Load JSON data ──
@@ -33,6 +32,74 @@
     }
   }
 
+  // ── Typing Effect State ──
+  let roles = ["Developer", "3D Artist", "Game Dev"];
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typingElement = document.getElementById('typing-text');
+
+  function typeEffect() {
+    if (!typingElement) return;
+    const currentRole = roles[roleIndex];
+    
+    if (isDeleting) {
+      typingElement.textContent = currentRole.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      typingElement.textContent = currentRole.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    let typeSpeed = isDeleting ? 30 : 80;
+
+    if (!isDeleting && charIndex === currentRole.length) {
+      typeSpeed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      typeSpeed = 400;
+    }
+    setTimeout(typeEffect, typeSpeed);
+  }
+
+  // ── Mouse Parallax Effect ──
+  function initParallax() {
+    const heroSection = document.getElementById('hero');
+    const character = document.getElementById('hero-character');
+
+    if (heroSection && character) {
+      heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        const x = e.clientX - rect.left; 
+        const y = e.clientY - rect.top;  
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const deltaX = (x - centerX) / centerX;
+        const deltaY = (y - centerY) / centerY;
+        
+        const rotateX = deltaY * -20; 
+        const rotateY = deltaX * 20;  
+        const translateX = deltaX * 30; 
+        const translateY = deltaY * 30;
+        
+        character.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+      
+      heroSection.addEventListener('mouseleave', () => {
+        character.style.transform = `translate3d(0, 0, 0) rotateX(0) rotateY(0)`;
+        character.style.transition = `transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)`;
+      });
+      
+      heroSection.addEventListener('mouseenter', () => {
+        character.style.transition = `transform 0.1s ease-out`;
+      });
+    }
+  }
+
   async function init() {
     const [projects, games, gallery, socials] = await Promise.all([
       loadJSON('data/projects.json'),
@@ -44,12 +111,19 @@
     if (projects) renderProjects(projects);
     if (games) renderGames(games);
     if (gallery) renderGallery(gallery);
-    if (socials) renderSocials(socials);
+    if (socials) {
+      if (socials.role) {
+        roles = socials.role.split('·').map(s => s.trim());
+      }
+      renderSocials(socials);
+    }
 
+    typeEffect();
+    initParallax();
     initReveal();
   }
 
-  // ── Render Projects ──
+  // ── Render Functions ──
   function renderProjects(items) {
     const container = document.getElementById('projects-grid');
     if (!container) return;
@@ -57,7 +131,6 @@
     items.forEach(item => container.appendChild(createCard(item, 'project')));
   }
 
-  // ── Render Games ──
   function renderGames(items) {
     const container = document.getElementById('games-grid');
     if (!container) return;
@@ -68,14 +141,13 @@
     });
   }
 
-  // ── Create a project/game card ──
   function createCard(item, type) {
     const card = document.createElement('div');
     card.className = 'card';
     card.setAttribute('role', 'button');
     card.setAttribute('tabindex', '0');
 
-    const linkLabel = type === 'game' ? 'Play on itch.io' : 'Visit Site';
+    const linkLabel = type === 'game' ? 'Play on itch.io' : 'View Project';
     const primaryLink = type === 'game' ? (item.itchLink || item.link || '#') : (item.link || '#');
 
     card.innerHTML = `
@@ -88,7 +160,7 @@
         </div>
         <div class="card-footer">
           <span class="card-year">${escapeHTML(item.year || '')}</span>
-          <span class="card-link">View Details ${ICONS.chevron}</span>
+          <span class="card-link">${linkLabel} ${ICONS.chevron}</span>
         </div>
       </div>
     `;
@@ -102,7 +174,7 @@
       primaryUrl: primaryLink,
       primaryLabel: linkLabel,
       secondaryUrl: item.github || item.otherLink || item.sketchfabLink || '',
-      secondaryLabel: item.github ? 'GitHub' : (item.sketchfabLink ? 'Sketchfab' : 'More Info'),
+      secondaryLabel: item.github ? 'GitHub' : (item.sketchfabLink ? 'Sketchfab' : 'Code'),
     }));
 
     card.addEventListener('keydown', (e) => {
@@ -112,7 +184,6 @@
     return card;
   }
 
-  // ── Render Gallery ──
   function renderGallery(items) {
     const container = document.getElementById('gallery-grid');
     if (!container) return;
@@ -155,11 +226,12 @@
     });
   }
 
-  // ── Render Socials ──
   function renderSocials(data) {
     document.title = `${data.name} — Portfolio`;
-    document.getElementById('hero-name').textContent = data.name;
-    document.getElementById('hero-role').textContent = data.role;
+    
+    // Check if the hero-name is uppercase
+    const fName = data.name.split(' ')[0].toUpperCase();
+    document.getElementById('hero-name').textContent = fName;
     document.getElementById('hero-location').textContent = data.location;
     document.getElementById('footer-name').textContent = data.name;
 
@@ -181,7 +253,8 @@
         a.target = '_blank';
         a.rel = 'noopener';
         a.className = 'social-btn';
-        a.innerHTML = `<span style="width:16px;height:16px;display:flex;">${ICONS[s.icon]}</span> ${s.label}`;
+        a.ariaLabel = s.label;
+        a.innerHTML = `<span style="width:20px;height:20px;display:flex;">${ICONS[s.icon]}</span>`;
         socialsContainer.appendChild(a);
       });
 
@@ -189,7 +262,7 @@
         const emailBtn = document.createElement('a');
         emailBtn.href = `mailto:${data.email}`;
         emailBtn.className = 'social-btn primary';
-        emailBtn.innerHTML = `<span style="width:16px;height:16px;display:flex;">${ICONS.mail}</span> Email`;
+        emailBtn.innerHTML = `<span style="width:18px;height:18px;display:flex;">${ICONS.mail}</span> Contact Me`;
         socialsContainer.appendChild(emailBtn);
       }
     }
@@ -247,7 +320,7 @@
       btn.target = '_blank';
       btn.rel = 'noopener';
       btn.className = 'modal-btn modal-btn-primary';
-      btn.innerHTML = `<span style="width:16px;height:16px;display:flex;">${ICONS.external}</span> ${escapeHTML(data.primaryLabel || 'Visit')}`;
+      btn.innerHTML = `<span style="width:18px;height:18px;display:flex;">${ICONS.external}</span> ${escapeHTML(data.primaryLabel || 'Visit')}`;
       actionsEl.appendChild(btn);
     }
 
@@ -257,7 +330,7 @@
       btn2.target = '_blank';
       btn2.rel = 'noopener';
       btn2.className = 'modal-btn modal-btn-secondary';
-      btn2.innerHTML = `<span style="width:16px;height:16px;display:flex;">${ICONS.github}</span> ${escapeHTML(data.secondaryLabel || 'Code')}`;
+      btn2.innerHTML = `<span style="width:18px;height:18px;display:flex;">${ICONS.github}</span> ${escapeHTML(data.secondaryLabel || 'Code')}`;
       actionsEl.appendChild(btn2);
     }
 

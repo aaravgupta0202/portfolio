@@ -9,18 +9,30 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <header class="hero fade-in">
-      <div class="profile-container">
-        <img src="images/profile.png" alt="Aarav Gupta" class="profile-pic" />
+    <header class="hero creative-hero fade-in" id="hero">
+      <div class="hero-content">
+        <div class="hero-greeting">Hi! I'm</div>
+        <h1 class="hero-name" id="hero-name">AARAV</h1>
+        
+        <div class="hero-character-wrapper" id="parallax-container">
+          <img src="images/profile.png" alt="Aarav Gupta" class="hero-character" id="hero-character" />
+        </div>
+        
+        <div class="hero-typing-container">
+          <span class="typing-text" id="typing-text"></span><span class="cursor-blink">|</span>
+        </div>
+        
+        <p id="hero-location" class="location">India</p>
+        <div id="contact-socials" class="social-links"></div>
       </div>
-      <h1 id="hero-name">Aarav Gupta</h1>
-      <p id="hero-role" class="subtitle">Developer · 3D Artist · Game Dev</p>
-      <p id="hero-location" class="location">India</p>
-      <div id="contact-socials" class="social-links"></div>
+      
+      <div class="scroll-indicator">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </div>
     </header>
 
     <main>
