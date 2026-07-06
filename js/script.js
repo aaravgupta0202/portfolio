@@ -210,9 +210,15 @@
     const container = document.getElementById('projects-grid');
     if (!container) return;
     container.innerHTML = '';
-    items.forEach(item => {
+    const renderItems = [...items, ...items, ...items, ...items]; // Duplicate for infinite scroll
+    renderItems.forEach((item, index) => {
       const card = createCard(item, 'project');
       card.style.transform = getRandomRotation();
+      if (index % 3 === 0) {
+        const tape = document.createElement('div');
+        tape.className = 'tape';
+        card.appendChild(tape);
+      }
       container.appendChild(card);
     });
   }
@@ -221,10 +227,16 @@
     const container = document.getElementById('games-grid');
     if (!container) return;
     container.innerHTML = '';
-    items.forEach(item => {
+    const renderItems = [...items, ...items, ...items, ...items];
+    renderItems.forEach((item, index) => {
       const normalized = { ...item, link: item.itchLink || item.link || '' };
       const card = createCard(normalized, 'game');
       card.style.transform = getRandomRotation();
+      if (index % 4 === 1) {
+        const tape = document.createElement('div');
+        tape.className = 'tape';
+        card.appendChild(tape);
+      }
       container.appendChild(card);
     });
   }
@@ -273,12 +285,19 @@
     if (!container) return;
     container.innerHTML = '';
 
-    items.forEach(item => {
+    const renderItems = [...items, ...items, ...items, ...items];
+    renderItems.forEach((item, index) => {
       const el = document.createElement('div');
       el.className = 'gallery-item';
       el.setAttribute('role', 'button');
       el.setAttribute('tabindex', '0');
       el.style.transform = getRandomRotation();
+      
+      if (index % 5 === 2) {
+        const tape = document.createElement('div');
+        tape.className = 'tape';
+        el.appendChild(tape);
+      }
 
       const thumbSrc = item.thumbnail || (item.images && item.images[0]);
       const imgHTML = thumbSrc
@@ -414,6 +433,7 @@
     }
 
     modalOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden'; // Lock background scrolling
     // Ensure custom cursor works in modal
     initHoverCursors(); 
   }
@@ -437,6 +457,7 @@
 
   function closeModal() {
     modalOverlay?.classList.remove('open');
+    document.body.style.overflow = ''; // Restore background scrolling
   }
 
   document.getElementById('modal-close-btn')?.addEventListener('click', closeModal);
